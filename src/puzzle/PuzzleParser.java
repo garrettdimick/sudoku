@@ -1,18 +1,17 @@
 package puzzle;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- *
+ * Used to create puzzle boards from text files. Can also save a solved puzzle to a text file.
  */
 public class PuzzleParser {
 
-    int dimension;
-    ArrayList<Character> symbols = new ArrayList<Character>();
+    protected int dimension;
+    protected ArrayList<Character> symbols = new ArrayList<Character>();
 
     public PuzzleParser(){}
 
@@ -37,6 +36,14 @@ public class PuzzleParser {
             }
         }
         return board;
+    }
+
+    public void saveSolutionToFile(String file, String solution) throws IOException {
+        File f = new File(file);
+        f.createNewFile();
+        try(PrintStream out = new PrintStream(new FileOutputStream(file))){
+            out.print(solution);
+        };
     }
 
     public boolean validSymbols(ArrayList<Character> symbolList){
