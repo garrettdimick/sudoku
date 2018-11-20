@@ -21,8 +21,6 @@ class SudokuGameTest {
         };
 
         sg.currentBoard = board;
-
-
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         sg.printBoard(sg.currentBoard);
